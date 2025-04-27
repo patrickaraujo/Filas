@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <locale.h>
-#include "ListaSequencial.h"
+#include "FilaEstatica.h"
 
 // Função para consultar e imprimir o aluno da frente da fila
 void consultar_primeiro(Fila* fi) {
