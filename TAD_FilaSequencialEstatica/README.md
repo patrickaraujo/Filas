@@ -1,128 +1,132 @@
-# 📚 Fila Sequencial Estática (FilaEstatica) em _C_
+# Fila Sequencial Estática – Estrutura de Dados em _C_
 
-Este projeto implementa uma estrutura de **fila sequencial estática** para armazenar registros de alunos, utilizando a linguagem _C_. A fila é baseada em um vetor de tamanho fixo, com controle dos índices de início e fim, permitindo operações de inserção e remoção de forma eficiente.
+Este projeto tem como objetivo ensinar e demonstrar, de forma prática, a implementação de uma **Fila Sequencial Estática** em linguagem _C_. O conteúdo foi preparado para auxiliar no aprendizado de estruturas de dados lineares.
+
+O código está na pasta `codigo`.
 
 ---
 
-## 🧱 Estrutura de Dados
+## 🧱 Tabela de Conteúdo
 
-A estrutura principal é:
+- [Fila Sequencial Estática](#fila-sequencial-estática)
+  - [Características](#características)
+  - [Estrutura da Fila](#estrutura-da-fila)
+- [Arquivos do Projeto](#arquivos-do-projeto)
+- [Operações Fundamentais](#operações-fundamentais)
+- [Vantagens e Desvantagens](#vantagens-e-desvantagens)
+- [Quando Utilizar](#quando-utilizar)
+- [Referências](#referências)
+
+---
+
+## 🧱 Fila Sequencial Estática
+
+Uma fila sequencial estática é implementada utilizando **alocação estática** e **acesso sequencial** dos elementos por meio de um _array_. Cada elemento sucessor ocupa a posição física seguinte ao seu antecessor.
+
+### Características
+
+- **Facilidade de criação e destruição:** alocação e liberação simples de memória.
+- **Tamanho fixo:** o tamanho máximo da fila precisa ser definido previamente.
+- **Acesso rápido:** inserção no final e remoção do início respeitando a ordem FIFO (_First-In, First-Out_).
+
+Essa abordagem é indicada para **filas pequenas** ou quando o **tamanho máximo é conhecido** previamente.
+
+---
+
+## 📐 Estrutura da Fila
+
+A estrutura da fila é composta por:
+
+- `inicio`: posição do primeiro elemento da fila.
+- `final`: posição onde o próximo elemento será inserido.
+- `qtd`: quantidade atual de elementos armazenados.
+- `dados[]`: array que armazena os elementos (neste caso, registros de alunos).
+
+A estrutura é encapsulada no arquivo `.c`, garantindo que o usuário interaja apenas por meio das funções públicas.
+
+---
+
+## 📂 Arquivos do Projeto
 
 ### `FilaEstatica.h`
-```c
-// ===== Arquivo: FilaEstatica.h =====
-#define MAX 100
-
-struct aluno {
-    int matricula;
-    char nome[30];
-    float n1, n2, n3;
-};
-
-typedef struct fila Fila;
-```
+- Define:
+  - A constante `MAX` (tamanho máximo da fila).
+  - O tipo de dado armazenado (`struct aluno`).
+  - O tipo `Fila` (definido via `typedef`).
+- Declara os protótipos das funções públicas:
+  - Criar e destruir fila.
+  - Inserir, remover e consultar elementos.
+  - Verificar se a fila está cheia ou vazia.
+  - Obter o tamanho da fila.
 
 ### `FilaEstatica.c`
+- Implementa:
+  - A estrutura interna da fila com `inicio`, `final`, `qtd` e `dados[]`.
+  - As funções para manipulação da fila.
+- Os campos internos são ocultos ao usuário.
+
+### `main.c`
+- Demonstra:
+  - A criação de uma fila.
+  - Inserção de alunos.
+  - Impressão dos elementos da fila.
+  - Consulta do primeiro elemento.
+  - Remoção de elementos e nova impressão.
+
+O usuário interage com a fila apenas através de um ponteiro:
+
 ```c
-// ===== Arquivo: FilaEstatica.c =====
-struct fila {
-    int inicio, final, qtd;
-    struct aluno dados[MAX];
-};
-```
-
-A fila é composta por um vetor fixo (`dados[MAX]`), índices de controle (`inicio` e `final`) e uma variável `qtd` para gerenciar a quantidade atual de elementos.
-
----
-
-## ⚙️ Funções Disponíveis
-
-### 📦 Criação e Liberação
-- `Fila* cria_Fila()`: Cria e inicializa uma nova fila vazia;
-- `void libera_Fila(Fila* fi)`: Libera a memória alocada para a fila.
-
-### 🔍 Verificação
-- `int tamanho_Fila(Fila* fi)`: Retorna o número de elementos da fila;
-- `int Fila_cheia(Fila* fi)`: Retorna 1 se a fila estiver cheia, 0 caso contrário;
-- `int Fila_vazia(Fila* fi)`: Retorna 1 se a fila estiver vazia, 0 caso contrário.
-
-### ➕ Inserção
-- `int insere_Fila(Fila* fi, struct aluno al)`: Insere um novo aluno no final da fila.
-
-### ➖ Remoção
-- `int remove_Fila(Fila* fi)`: Remove o aluno da frente da fila.
-
-### 🔎 Consulta
-- `int consulta_Fila(Fila* fi, struct aluno *al)`: Recupera o aluno que está na frente da fila sem removê-lo.
-
----
-
-## 🛠️ Compilação e Execução
-
-Para compilar o projeto, utilize o seguinte comando no terminal:
-
-```bash
-gcc main.c FilaEstatica.c -o programa
-```
-
-Para executar:
-
-```bash
-./programa
+Fila *fi;
 ```
 
 ---
 
-## 💡 Exemplo de Saída
+## ✏️ Operações Fundamentais
 
-```
-Inserindo alunos na fila...
-
-Imprimindo fila atual:
-Matrícula: 123
-Nome: Ana
-Notas: 8,00, 7,50, 9,00
---------------------------
-Matrícula: 456
-Nome: Bruno
-Notas: 6,00, 6,50, 7,00
---------------------------
-Matrícula: 789
-Nome: Carlos
-Notas: 9,00, 8,50, 9,50
---------------------------
-
-Tamanho atual da fila: 3
-
-Consultando o primeiro aluno da fila:
-Aluno na frente da fila:
-Matrícula: 123
-Nome: Ana
-Notas: 8,00, 7,50, 9,00
-
-Removendo o aluno da frente...
-
-Imprimindo fila após remoção:
-Matrícula: 456
-Nome: Bruno
-Notas: 6,00, 6,50, 7,00
---------------------------
-Matrícula: 789
-Nome: Carlos
-Notas: 9,00, 8,50, 9,50
---------------------------
-
-Tamanho atual da fila: 2
-
-Consultando o novo primeiro aluno da fila:
-Aluno na frente da fila:
-Matrícula: 456
-Nome: Bruno
-Notas: 6,00, 6,50, 7,00
-```
+- **Criar Fila:** aloca memória e inicializa `inicio`, `final` e `qtd` em 0.
+- **Inserir Elemento:** adiciona um novo aluno na posição `final` e atualiza o contador.
+- **Remover Elemento:** remove o elemento do início da fila e ajusta o ponteiro `inicio`.
+- **Consultar Elemento:** acessa o primeiro aluno da fila sem removê-lo.
+- **Liberar Fila:** libera a memória alocada.
 
 ---
 
-## 👨‍💻 Autor
+## ✅ Vantagens e ❌ Desvantagens
 
-Este projeto é uma implementação didática de uma fila sequencial estática em _C_, com fins de aprendizado e prática em estruturas de dados.
+### Vantagens
+
+- Simples de implementar.
+- Acesso direto via índice.
+- Operações de inserção e remoção em tempo constante (O(1)).
+
+### Desvantagens
+
+- Tamanho fixo (limitado pela constante `MAX`).
+- Necessidade de deslocamento circular ao inserir ou remover elementos.
+
+---
+
+## 📌 Quando Utilizar
+
+- Em filas de tamanho pequeno ou médio.
+- Quando o número máximo de elementos pode ser definido antecipadamente.
+- Quando o controle e simplicidade do código são prioridades.
+
+---
+
+## 📚 Referências
+
+### Referência Básica
+- Backes, Andre Ricardo. _Algoritmos e Estruturas de Dados em Linguagem C_. LTC, 2022.
+- Ascencio, Ana Fernanda Gomes. _Análise de Algoritmos e Estrutura de Dados_. Prentice Hall, 2010.
+
+### Referência Complementar
+- _Estruturas de Dados e Seus Algoritmos_. LTC, 2009.
+- Tenenbaum, Aaron M., et al. _Estruturas de Dados Usando C_. Pearson Makron Books, 1995.
+
+---
+
+Este material foi elaborado como parte de uma aula prática sobre Estruturas de Dados em _C_.
+
+# TAD_FilaSequencialEstatica
+Implementação prática do Tipo Abstrato de Dados (TAD) **Fila Sequencial Estática**.
