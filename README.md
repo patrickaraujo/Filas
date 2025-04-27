@@ -60,7 +60,7 @@ As operações fundamentais para manipular uma fila são:
 | 🔢 **Operação**         | 💡 **Descrição**                                        | ⏱️ **Complexidade (Estática)** | ⏱️ **Complexidade (Dinâmica)** |
 |----------------------|------------------------------------------------------|-----------------------------|-----------------------------|
 | `cria_fila()`        | Inicializa a fila.                                   | O(1)                        | O(1)                        |
-| `insere_Fila(x)`     | Insere um elemento no fim da fila.                   | O(1)                        | O(1)                        |
+| `insere_Fila()`      | Insere um elemento no fim da fila.                   | O(1)                        | O(1)                        |
 | `remove_Fila()`      | Remove e retorna o primeiro elemento.                | O(1)                        | O(1)                        |
 | `consulta_Fila()`    | Retorna o primeiro elemento (sem remover).           | O(1)                        | O(1)                        |
 | `Fila_vazia()`       | Verifica se a fila está vazia.                       | O(1)                        | O(1)                        |
