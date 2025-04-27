@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <locale.h>
-#include "FilaEstatica.h"
+#include "ListaSequencial.h"
 
 // Função para consultar e imprimir o aluno da frente da fila
 void consultar_primeiro(Fila* fi) {
@@ -30,15 +30,32 @@ void imprime_fila(Fila* fi) {
         return;
     }
 
-    int i, pos = fi->inicio;
-    printf("\n--- Conteúdo da Fila ---\n");
-    for (i = 0; i < fi->qtd; i++) {
-        printf("Matrícula: %d\n", fi->dados[pos].matricula);
-        printf("Nome: %s\n", fi->dados[pos].nome);
-        printf("Notas: %.2f, %.2f, %.2f\n", fi->dados[pos].n1, fi->dados[pos].n2, fi->dados[pos].n3);
+    // Criar uma cópia da fila para não alterar a fila original
+    Fila* aux = cria_Fila();
+    struct aluno temp;
+
+    int tamanho = tamanho_Fila(fi);
+
+    // Copiando os elementos para uma fila auxiliar
+    for (int i = 0; i < tamanho; i++) {
+        consulta_Fila(fi, &temp);
+        insere_Fila(aux, temp);
+        remove_Fila(fi);
+
+        printf("Matrícula: %d\n", temp.matricula);
+        printf("Nome: %s\n", temp.nome);
+        printf("Notas: %.2f, %.2f, %.2f\n", temp.n1, temp.n2, temp.n3);
         printf("--------------------------\n");
-        pos = (pos + 1) % MAX;
     }
+
+    // Restaurando os elementos para a fila original
+    for (int i = 0; i < tamanho; i++) {
+        consulta_Fila(aux, &temp);
+        insere_Fila(fi, temp);
+        remove_Fila(aux);
+    }
+
+    libera_Fila(aux);
 }
 
 int main() {
@@ -56,6 +73,7 @@ int main() {
     insere_Fila(minha_fila, a3);
 
     // Imprimindo a fila atual
+    printf("Imprimindo fila atual:\n");
     imprime_fila(minha_fila);
 
     // Tamanho atual da fila
@@ -70,6 +88,7 @@ int main() {
     remove_Fila(minha_fila);
 
     // Imprimindo a fila novamente
+    printf("Imprimindo fila após remoção:\n");
     imprime_fila(minha_fila);
 
     // Tamanho atual da fila
