@@ -59,13 +59,13 @@ As operações fundamentais para manipular uma fila são:
 
 | 🔢 **Operação**         | 💡 **Descrição**                                        | ⏱️ **Complexidade (Estática)** | ⏱️ **Complexidade (Dinâmica)** |
 |----------------------|------------------------------------------------------|-----------------------------|-----------------------------|
-| `criar_fila()`       | Inicializa a fila.                                   | O(1)                        | O(1)                        |
-| `enfileirar(x)`      | Insere x no final.                                   | O(1)                        | O(1)                        |
-| `desenfileirar()`    | Remove e retorna o primeiro elemento.                | O(1)                        | O(1)                        |
-| `frente()`           | Retorna o primeiro elemento (sem remover).           | O(1)                        | O(1)                        |
-| `fila_vazia()`       | Verifica se a fila está vazia.                       | O(1)                        | O(1)                        |
-| `fila_cheia()`       | Verifica se a fila está cheia (só estática).         | O(1)                        | -                           |
-| `destruir_fila()`    | Libera a memória alocada.                            | O(1)                        | O(n)                        |
+| `cria_fila()`        | Inicializa a fila.                                   | O(1)                        | O(1)                        |
+| `insere_Fila(x)`     | Insere um elemento no fim da fila.                   | O(1)                        | O(1)                        |
+| `remove_Fila()`      | Remove e retorna o primeiro elemento.                | O(1)                        | O(1)                        |
+| `consulta_Fila()`    | Retorna o primeiro elemento (sem remover).           | O(1)                        | O(1)                        |
+| `Fila_vazia()`       | Verifica se a fila está vazia.                       | O(1)                        | O(1)                        |
+| `Fila_cheia()`       | Verifica se a fila está cheia (só estática).         | O(1)                        | -                           |
+| `libera_Fila()`      | Libera a memória alocada.                            | O(1)                        | O(n)                        |
 
 ---
 
