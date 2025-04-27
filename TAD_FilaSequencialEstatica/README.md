@@ -2,7 +2,7 @@
 
 Este projeto tem como objetivo ensinar e demonstrar, de forma prática, a implementação de uma **Fila Sequencial Estática** em linguagem _C_. O conteúdo foi preparado para auxiliar no aprendizado de estruturas de dados lineares.
 
-O código está na pasta `codigo`.
+O código está na pasta `codigos`.
 
 ---
 
