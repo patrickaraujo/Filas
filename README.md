@@ -41,7 +41,8 @@ Uma fila é uma estrutura de dados linear. Na computação funciona como uma fil
      	- Acesso rápido aos elementos.
   	- Desvantagens
    		- Tamanho fixo (pode causar estouro).
-     	- Desperdício de memória se subutilizada.
+       		- Desperdício de memória se subutilizada.
+ 	- Indicação : Ideal para filas pequenas ou quando o tamanho máximo é bem definido.
 
 2. Fila Dinâmica (Encadeada)
 	- Alocação dinâmica: Cresce e diminui conforme a necessidade.
@@ -51,11 +52,14 @@ Uma fila é uma estrutura de dados linear. Na computação funciona como uma fil
     	- Não desperdiça memória.
  	- Desvantagens
   		- Acesso sequencial (mais lento para buscar elementos no meio).
-    	- Overhead de memória por causa dos ponteiros.
+    	- _Overhead_ de memória por causa dos ponteiros.
 
 --- 
 
 ## Operações Básicas
+
+As operações fundamentais para manipular uma fila são:
+
 
 | **Operação**         | **Descrição**                                        | **Complexidade (Estática)** | **Complexidade (Dinâmica)** |
 |----------------------|------------------------------------------------------|-----------------------------|-----------------------------|
